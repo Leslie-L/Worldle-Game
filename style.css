@@ -72,6 +72,9 @@ body {
   cursor: pointer;
   font-size: 2rem;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button_enter{
   width: 3.6rem;
