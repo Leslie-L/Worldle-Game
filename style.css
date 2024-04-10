@@ -39,7 +39,7 @@ body {
   list-style: none;
 }
 .game li{
-  border: #f9f9f9 solid 1px;
+  border: #666a85 solid 1px;
   background-color: rgb(58, 59, 59);
   width: 2rem;
   height: 2rem;

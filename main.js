@@ -84,10 +84,15 @@ function checkFinalWord() {
     const key = wordGame[i]
     if(word[i]===key.toLowerCase()){
       line.children[i].style.backgroundColor= '#79b851'
+      line.children[i].style.border='none'
     }else if(word.includes(key.toLowerCase())){
       line.children[i].style.backgroundColor= '#f3c237'
+      line.children[i].style.border='none'
+
     }else{
       line.children[i].style.backgroundColor= '#666a85'
+      line.children[i].style.border='none'
+
     }
   }
 
