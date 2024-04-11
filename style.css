@@ -95,6 +95,28 @@ body {
   background-color: #028bf4;
 
 }
+menu{
+    height: 50px;
+    width: 70%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+menu button{
+  border: none;
+ background-color: #666a85;
+ padding:8px;
+ font-size: 1rem; 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 5px;
+}
+menu button:hover{
+  background-color: #028bf4;
+
+}
 .game{
   min-height: 320px;
   width: 100%;
