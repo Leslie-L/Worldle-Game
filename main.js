@@ -2,7 +2,28 @@ const  tries = 6;
 const amountLetters = 5;
 
 
-const words = ["lapiz","cabal","traje","comer","habla"]
+const words =  [
+  "perro",
+  "gatos",
+  "pluma",
+  "mesas",
+  "luces",
+  "llaves",
+  "comer",
+  "lapiz",
+  "papel",
+  "leche",
+  "mango",
+  "lente",
+  "tigre",
+  "fresa",
+  "dulce",
+  "monje",
+  "silla",
+  "cerro",
+  "radio",
+  "cajas"
+];
 let word;
 let numberGame = 0;
 
@@ -41,12 +62,13 @@ function paintKeyboard() {
             </svg>
           `;
           bnt.classList.add('button')
+          
         }else{
           bnt.addEventListener('click',()=>paintRes(letter))
           bnt.textContent=letter;
           bnt.classList.add('button')
         }
-        
+        bnt.id=letter
         
         col.appendChild(bnt)
         return col
@@ -70,7 +92,8 @@ function keyIntialTries() {
 }
 keyIntialTries()
 paintKeyboard()
-function paintRes(key) {
+function paintRes(k) {
+  const key = k.toLowerCase()
   if(wordGame.length===5)
     return;
 
@@ -87,18 +110,22 @@ function checkFinalWord() {
   const  line = document.getElementById(`line${countTries}`);
   for (let i = 0; i < amountLetters; i++) {
     const key = wordGame[i]
+    const keyboarKey = document.getElementById(key); 
+    console.log(keyboarKey)
     if(word[i]===key.toLowerCase()){
       line.children[i].style.backgroundColor= '#79b851'
       line.children[i].style.border='none'
+      keyboarKey.style.backgroundColor= '#79b851'
     }else if(word.includes(key.toLowerCase())){
       line.children[i].style.backgroundColor= '#f3c237'
       line.children[i].style.border='none'
-
+      keyboarKey.style.backgroundColor= '#f3c237'
     }else{
       line.children[i].style.backgroundColor= '#666a85'
       line.children[i].style.border='none'
-
+      keyboarKey.style.backgroundColor= '#37383e'
     }
+    
   }
 
   if(word.join('')===wordGame.join('')){
