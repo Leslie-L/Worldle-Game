@@ -24,7 +24,65 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+.dialog{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: #5e5151d7;
+  border:  none;
+}
+.hidden{
+  display: none;
+}
+.modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background: #656780;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.form{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.form .close{
+  width: 50px;
+  font-size: 1.5rem;
+  border: none;
+  color: white;
+  background:none;
+  cursor: pointer;
+}
+.modal h2{
+  font-size: 5rem;
+  text-align: center;
+}
+.modal p{
+  font-size: 1.5rem;
+  text-align: center;
+}
+.modal button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+  background-color: #225602;
+  cursor: pointer;
+}
+.modal button:hover{
+  background-color: #028bf4;
 
+}
 .game{
   min-height: 320px;
   width: 100%;
@@ -46,7 +104,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.4rem;
+  font-size: 1rem;
 }
 
 #keyboard{
@@ -78,6 +136,7 @@ body {
 }
 .button_enter{
   width: 3.6rem;
+  font-size: 1rem;
 }
 .button:hover{
   background-color: #028bf4;
@@ -91,10 +150,12 @@ body {
   }
   .button_enter{
     width: 6rem;
+    font-size: 2rem;
   }
   #game li{
     width: 4rem;
     height: 4rem;
+    font-size: 2rem;
   }
 }
 @media (prefers-color-scheme: light) {

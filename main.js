@@ -8,7 +8,7 @@ const words =  [
   "pluma",
   "mesas",
   "luces",
-  "llaves",
+  "llave",
   "comer",
   "lapiz",
   "papel",
@@ -32,7 +32,10 @@ let wordGame = [];
 
 
 const keyboard = document.getElementById('keyboard');
+const dialog = document.getElementById("modal");
+const buttonNextGame = document.getElementById('modal_button')
 const game = document.getElementById('game')
+const closeButtonModal = document.getElementById('close')
 
 const keys = [
   ["q","w","e","r","t","y","u","i","o","p"],
@@ -90,8 +93,7 @@ function keyIntialTries() {
     game.append(actualRow)
   }
 }
-keyIntialTries()
-paintKeyboard()
+
 function paintRes(k) {
   const key = k.toLowerCase()
   if(wordGame.length===5)
@@ -101,9 +103,35 @@ function paintRes(k) {
   line.children[wordGame.length].textContent = key;
   wordGame.push(key);
 }
+function controlModal(result) {
+  const modal = document.getElementById('modal_content')
+  const icon = document.getElementById('modal_icon');
+  const modal_text = document.getElementById('modal_text');
+  const buttonNextGame = document.getElementById('modal_button')
+  
+  if(result==='win'){
+    
+    icon.textContent = '🏆'
+    modal_text.textContent='Ganaste'
+    modal.style.background = '#79b851'
+    buttonNextGame.classList.remove('hidden')
+  }else if(result==='lose'){
+    icon.textContent = '☹️'
+    modal_text.textContent='Perdiste'
+    modal.style.background = '#e74c3c'
+    buttonNextGame.classList.remove('hidden')
+  }else if(result==='noword'){
+    icon.textContent = '🧐'
+    modal_text.textContent='Faltan letras'
+    modal.style.background = '#f3c237'
+    buttonNextGame.classList.add('hidden')
+  }
+  
+  dialog.classList.remove('hidden')
+}
 function checkFinalWord() {
   if(wordGame.length!==amountLetters){
-    alert('Faltan letras')
+    controlModal('noword')
     return
   }
 
@@ -129,15 +157,16 @@ function checkFinalWord() {
   }
 
   if(word.join('')===wordGame.join('')){
-    alert('Tu ganas!')
+    controlModal('win')
   }else if(countTries<5){
     countTries++;
     wordGame = []
   }else if(countTries === 5){
-    alert('Tu pierdes')
+    controlModal('lose')
   }
 
 }
+
 function deleteLetter() {
   if(wordGame===0)
     return
@@ -153,9 +182,32 @@ function checkKey(event) {
     checkFinalWord()
   }else if(key==='Backspace'){
     deleteLetter()
+  }else if(key==='Escape'){
+    console.log('Escape')
+    dialog.classList.add('hidden')
   }else{
     paintRes(key)
   }
 }
 
+keyIntialTries()
+paintKeyboard()
 document.addEventListener('keydown',checkKey)
+closeButtonModal.addEventListener('click',()=>{
+  dialog.classList.add('hidden')
+})
+buttonNextGame.addEventListener('click',()=>{
+  const dialog = document.getElementById("modal");
+
+  numberGame++;
+  countTries = 0;
+  wordGame = [];
+  if(numberGame>=19)
+    numberGame=0
+  keyboard.innerHTML='';
+  game.innerHTML=''
+  keyIntialTries();
+  paintKeyboard();
+
+  dialog.classList.add('hidden')
+})
