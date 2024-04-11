@@ -28,8 +28,17 @@ body {
   width: 100%;
   height: 100vh;
   position: fixed;
-  background: #5e5151d7;
+  background: transparent;
   border:  none;
+  animation: modal 400ms ease-in-out;
+}
+@keyframes modal {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 .hidden{
   display: none;
@@ -38,6 +47,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
@@ -47,7 +57,9 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+
 }
+
 .form{
   width: 100%;
   display: flex;
@@ -141,7 +153,17 @@ body {
 .button:hover{
   background-color: #028bf4;
 }
-
+.animation{
+  animation: move 500ms ease-in-out;
+}
+@keyframes move {
+  from {
+    transform: rotateX(180deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
 
 @media only screen and (min-width: 600px) {
   .button{

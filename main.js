@@ -153,7 +153,7 @@ function checkFinalWord() {
       line.children[i].style.border='none'
       keyboarKey.style.backgroundColor= '#37383e'
     }
-    
+    line.children[i].classList.add('animation')
   }
 
   if(word.join('')===wordGame.join('')){
