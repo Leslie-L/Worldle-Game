@@ -36,7 +36,7 @@ const dialog = document.getElementById("modal");
 const buttonNextGame = document.getElementById('modal_button')
 const game = document.getElementById('game')
 const closeButtonModal = document.getElementById('close')
-
+const newGame  = document.getElementById('newGame')
 const keys = [
   ["q","w","e","r","t","y","u","i","o","p"],
   ["a","s","d","f","g","h","j","k","l","ñ"],
@@ -168,7 +168,7 @@ function checkFinalWord() {
 }
 
 function deleteLetter() {
-  if(wordGame===0)
+  if(wordGame.length===0)
     return
 
   const  line = document.getElementById(`line${countTries}`);
@@ -178,14 +178,14 @@ function deleteLetter() {
 
 function checkKey(event) {
   const key = event.key
+  console.log("Key: ",key);
   if(key==='Enter'){
     checkFinalWord()
   }else if(key==='Backspace'){
     deleteLetter()
   }else if(key==='Escape'){
-    console.log('Escape')
     dialog.classList.add('hidden')
-  }else{
+  }else if(key.length === 1 && key!==' '){
     paintRes(key)
   }
 }
@@ -196,7 +196,7 @@ document.addEventListener('keydown',checkKey)
 closeButtonModal.addEventListener('click',()=>{
   dialog.classList.add('hidden')
 })
-buttonNextGame.addEventListener('click',()=>{
+function newGameAction() {
   const dialog = document.getElementById("modal");
 
   numberGame++;
@@ -210,4 +210,12 @@ buttonNextGame.addEventListener('click',()=>{
   paintKeyboard();
 
   dialog.classList.add('hidden')
+}
+
+newGame.addEventListener('click',()=>{
+  console.log('aqui hay cositas?')
+  newGameAction()
+})
+buttonNextGame.addEventListener('click',()=>{
+  newGameAction()
 })
